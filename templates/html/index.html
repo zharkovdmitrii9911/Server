@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+      {% block content %}
+
+<h1 class="display-4 fw-normal absolute">Путешествуй по Беларуси</h1>
+            <video autoplay muted loop id="myVideo" class="mainVideo">
+                <source src="{% static "video/videoplayback.mp4" %}" type="video/mp4" >
+            </video>
+      <div class="content">
+        <H2>Ищите вдохновение и планируете поездку?</H2>
+        <p>Мы поможем сэкономить в путешестви по Беларуси</p>
+      </div>
+
+       <div class="sub_content">
+        <H2>Помощь в ночлежке путишествующим по стране</H2>
+        <p>Данный проект созданы с целью помощи странствующим по стране. Добрые люди всегда готовы предоставить тёплую кровать </p>
+      </div>
+      {% endblock %}

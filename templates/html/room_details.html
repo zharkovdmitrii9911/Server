@@ -1,0 +1,23 @@
+<!--templates/article_details.html-->
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <a class="font-weight-bold" href="{% url 'room_details' room.id %}">{{ room.title }}</a>
+    </div>
+
+    <div class="card-body ta-l">{{ room.discript }}</div>
+    <div class="card-body ta-l">{{ room.phone }}</div>
+    <div class="card-footer text-center">
+        {% if room.author == request.user.id %}
+        <a class="btn btn-primary btn-sm" href="{% url 'room_edit' room.pk %}">📝 Edit</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'room_delete' room.pk %}">🗑 Delete</a>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock content %}

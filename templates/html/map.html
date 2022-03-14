@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form class="navbar-form navbar-left m-2 p-4" action="{% url 'map' %}">
+            <div class="input-group">
+                <input id="search" name="q" type="text" class="form-control" placeholder="Найти">
+                <div class="input-group-btn">
+                    <button class="btn btn-success" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    {% if object_list %}
+        {% for object in object_list %}
+            <div class="serch mt-2 ta-l">
+                <a href="{% url 'room_details' object.id  %}">
+                    <h2 class="ta-l">{{ object.title }}</h2>
+
+                </a>
+                <p>
+                    {{ object.adres}}
+                </p>
+                <p>
+                    {{ object.discript }}
+                </p>
+
+
+
+                {{ object.content|safe }}
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+{% endblock %}
