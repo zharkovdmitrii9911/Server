@@ -3,7 +3,7 @@
 {% block content %}
     <a href="{% url 'room_create' %}">Создать</a>
     {% for obj in rooms %}
-        {% if obj.author == request.user.id %}
+        {% if obj.author == request.user %}
         <div class="serch mt-2 ta-l">
                 <a href="{% url 'room_details' obj.id  %}">
                     <h2 class="ta-l">{{ obj.title }}</h2>
@@ -14,8 +14,6 @@
                 <p>
                     {{ obj.discript }}
                 </p>
-
-                {{ obj.content|safe }}
             </div>
         {% endif %}
     {% endfor %}

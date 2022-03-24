@@ -10,9 +10,11 @@
     </div>
 
     <div class="card-body ta-l">{{ room.discript }}</div>
-    <div class="card-body ta-l">{{ room.phone }}</div>
+    <div class="card-body ta-l">{{ room.adres }}</div>
+    <div class="card-body ta-l">{{ room.usphone }}</div>
+
     <div class="card-footer text-center">
-        {% if room.author == request.user.id %}
+        {% if room.author == request.user %}
         <a class="btn btn-primary btn-sm" href="{% url 'room_edit' room.pk %}">📝 Edit</a>
         <a class="btn btn-danger btn-sm" href="{% url 'room_delete' room.pk %}">🗑 Delete</a>
         {% endif %}

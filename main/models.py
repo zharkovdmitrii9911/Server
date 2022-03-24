@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import Q
+from django.urls import reverse
 
 from accounts.models import CustomUser
 
@@ -25,6 +26,9 @@ class Room(models.Model):
     discript = models.TextField('Описание')
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     objects = RoomManager()
+
+    def get_absolute_url(self):
+        return reverse('room_details', args=[str(self.id)])
 
 
 

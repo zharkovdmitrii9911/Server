@@ -22,6 +22,14 @@ def MyRooms(request):
     rooms = Room.objects.all()
     return render(request, 'html/User_room.html', {'rooms': rooms})
 
+class My_Rooms(LoginRequiredMixin, View):
+    rooms = Room.objects.all()
+    template_name = 'html/User_room.html'
+
+    def test_func(self,request):
+
+        return render(request, template_name=self.template_name)
+
 class RoomCreateView(LoginRequiredMixin, CreateView):
     model = Room
     fields = ["title", "adres",  "usphone",  "discript", ]
@@ -34,8 +42,8 @@ class RoomCreateView(LoginRequiredMixin, CreateView):
 
 class RoomUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Room
-    template_name = "room_edit.html"
-    fields = ["title", "body"]
+    template_name = "html/room_edit.html"
+    fields = ["title", "adres",  "usphone",  "discript", ]
 
     def test_func(self):
         return self.get_object().author == self.request.user
@@ -43,7 +51,7 @@ class RoomUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class RoomDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Room
-    template_name = "room_delete.html"
+    template_name = "html/room_delete.html"
     success_url = reverse_lazy("main")
 
     def test_func(self):
