@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-eo6u)0ennv@pg$%n4dl@q(@9f_mwm6eb33l+q@9_@a14m_6-op
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -124,6 +124,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static"),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 
 
 
@@ -136,3 +137,7 @@ LOGOUT_REDIRECT_URL = 'main'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import  dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
