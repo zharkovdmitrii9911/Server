@@ -111,6 +111,7 @@ a:hover{
 }
 .sub_content {
 width: 80%;
+    margin-left: 10%;
 }
 p{
     text-align: left;
@@ -189,3 +190,38 @@ box{
 .serch{
     background: #29648f;
 }
+.serchbtn{
+    background: #29648f;
+}
+.serchbtn:hover {
+    color: #0b3fe8; /* Цвет ссылки при наведении на нее курсора мыши */
+    background: #26da4c; /* Цвет фона */
+   }
+
+.a_logo{
+    color: #6fa8fd
+}
+.a_logo>span{
+    margin-left: -11px;
+    margin-bottom: -15px;
+}
+.btn_login{
+    color: #c9d6e1;
+border-color: #c9d6e1;
+}
+nav>a{
+    margin-top: 4px;
+}
+/--map--/
+box_block {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+box_block ul {
+    display: inline-block;
+}
+box_block li {
+    float:left;
+}
+/--map--/

@@ -1,11 +1,11 @@
 <!-- templates/registration/login.html -->
 {% extends 'base.html' %}
 {% block content %}
-<h2>Log In</h2>
+<h2>Вход</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-success" type="submit">Log In</button>
-    <a class="btn btn-secondary" href="{% url 'password_reset' %}">Forgot password?</a>
+    <button class="btn btn-success" type="submit">Войти</button>
+    <a class="btn btn-secondary" href="{% url 'password_reset' %}">Забыли пароль?</a>
 </form>
 {% endblock content %}

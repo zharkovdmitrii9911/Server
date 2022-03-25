@@ -5,7 +5,24 @@
             <div class="input-group">
                 <input id="search" name="q" type="text" class="form-control" placeholder="Найти">
                 <div class="input-group-btn">
-                    <button class="btn btn-success" type="submit">
+                    <button class="btn btn-success serchbtn" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+ width="20" height="20" viewBox="0 0 512.000000 512.000000"
+ preserveAspectRatio="xMidYMid meet">
+<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+fill="currentColor" stroke="none">
+<path d="M1870 4899 c-710 -59 -1334 -549 -1559 -1225 -262 -786 27 -1632 713
+-2089 595 -396 1368 -405 1973 -23 l65 41 692 -692 c380 -380 695 -691 700
+-691 20 0 286 274 286 295 0 13 -223 243 -677 697 -631 631 -675 678 -662 696
+8 10 44 59 81 107 454 602 476 1446 53 2081 -311 466 -800 755 -1365 804 -127
+11 -161 11 -300 -1z m478 -238 c495 -110 888 -413 1109 -856 262 -523 214
+-1157 -125 -1635 -86 -122 -260 -296 -382 -382 -362 -256 -818 -350 -1257
+-258 -544 113 -1003 521 -1179 1045 -67 200 -78 275 -79 515 0 171 4 232 18
+300 74 347 221 616 463 851 256 247 545 387 919 443 17 2 118 3 225 1 151 -3
+216 -8 288 -24z"/>
+</g>
+</svg>
+
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
@@ -32,7 +49,31 @@
 
             </div>
         {% endfor %}
+    <div class="box_block">
+        {% if object_list.has_other_pages %}
+          <ul class="pagination">
+            {% if object_list.has_previous %}
+              <li><a href="?page={{ object_list.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in object_list.paginator.page_range %}
+              {% if object_list.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if object_list.has_next %}
+              <li><a href="?page={{ object_list.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+    </div>
     {% else %}
         <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
     {% endif %}
+
 {% endblock %}

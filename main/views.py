@@ -72,11 +72,13 @@ class SearchView(View):
         context = {}
 
         q = request.GET.get('q')
-        if q:
+        if True:
             query_sets = []  # Общий QuerySet
-
+            if q=="":
+                query_sets.append(Room.objects.all())
+            else:
             # Ищем по всем моделям
-            query_sets.append(Room.objects.search(query=q))
+                query_sets.append(Room.objects.search(query=q))
 
 
             # и объединяем выдачу
