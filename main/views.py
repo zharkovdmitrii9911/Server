@@ -86,7 +86,7 @@ class SearchView(View):
 
             context['last_question'] = '?q=%s' % query_sets
 
-            paginator = Paginator(final_set, 2)
+            paginator = Paginator(final_set, 10)
 
             page = request.GET.get('page')
 

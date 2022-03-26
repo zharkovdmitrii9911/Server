@@ -49,19 +49,19 @@ fill="currentColor" stroke="none">
 
             </div>
         {% endfor %}
-    <div class="box_block">
+    <div class="pagination_box">
         {% if object_list.has_other_pages %}
-          <ul class="pagination">
+          <ul class="pageul">
             {% if object_list.has_previous %}
-              <li><a href="?page={{ object_list.previous_page_number }}">&laquo;</a></li>
+              <li class="pageli"><a href="?page={{ object_list.previous_page_number }}">&laquo;</a></li>
             {% else %}
-              <li class="disabled"><span>&laquo;</span></li>
+              <li class="disabled pageli"><span>&laquo;</span></li>
             {% endif %}
             {% for i in object_list.paginator.page_range %}
               {% if object_list.number == i %}
-                <li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>
+                <li class="active pageli"><span>{{ i }} <span class="sr-only"></span></span></li>
               {% else %}
-                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                <li class="pageli"><a href="?page={{ i }}">{{ i }}</a></li>
               {% endif %}
             {% endfor %}
             {% if object_list.has_next %}
