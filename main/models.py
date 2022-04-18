@@ -31,7 +31,10 @@ class Room(models.Model):
         return reverse('room_details', args=[str(self.id)])
 
 
-
+class Image(models.Model):
+    condo = models.ForeignKey(Room, on_delete=models.CASCADE, related_name='images')
+    image = models.FileField(upload_to="images/")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
 
 
